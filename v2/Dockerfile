@@ -1,4 +1,4 @@
-FROM python:2.7-alpine
+FROM python:2-alpine
 ENV CONSUL_TEMPLATE_VERSION=0.14.0
 
 RUN apk --update --no-cache add \

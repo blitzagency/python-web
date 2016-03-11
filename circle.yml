@@ -19,14 +19,17 @@ checkout:
 
 dependencies:
   override:
-    - docker build -t blitzagency/python-web:2.7 .
+    - docker build -f v2/Dockerfile -t blitzagency/python-web:2
+    - docker build -f v3/Dockerfile -t blitzagency/python-web:3
 
 test:
   override:
-    - docker run --name python -d blitzagency/python-web:2.7 python --version
+    - docker run --name python -d blitzagency/python-web:2 python --version
+    - docker run --name python -d blitzagency/python-web:3 python --version
 
 deployment:
   master:
     branch: master
     commands:
-      - docker push blitzagency/python-web:2.7
+      - docker push blitzagency/python-web:2
+      - docker push blitzagency/python-web:3
