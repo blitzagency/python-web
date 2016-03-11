@@ -1,0 +1,32 @@
+# The following are required to setup in the Circle's UI:
+#
+# Environment Variables:
+# DOCKER_USER: username for hub.docker.com
+# DOCKER_PASS: password for hub.docker.com
+# DOCKER_EMAIL: email address for hub.docker.com
+#
+
+machine:
+  pre:
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.1-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+  services:
+    - docker
+
+checkout:
+  post:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+
+dependencies:
+  override:
+    - docker build -t blitzagency/python-web:2.7 .
+
+test:
+  override:
+    - docker run --name python -d blitzagency/python-web:2.7 python --version
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - docker push blitzagency/python-web:2.7
