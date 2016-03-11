@@ -19,8 +19,8 @@ checkout:
 
 dependencies:
   override:
-    - docker build -f v2/Dockerfile -t blitzagency/python-web:2
-    - docker build -f v3/Dockerfile -t blitzagency/python-web:3
+    - docker build -t blitzagency/python-web:2 v2/Dockerfile
+    - docker build -t blitzagency/python-web:3 v3/Dockerfile
 
 test:
   override:
