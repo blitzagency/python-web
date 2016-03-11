@@ -24,8 +24,8 @@ dependencies:
 
 test:
   override:
-    - docker run --name python -d blitzagency/python-web:2 python --version
-    - docker run --name python -d blitzagency/python-web:3 python --version
+    - docker run blitzagency/python-web:2 python --version
+    - docker run blitzagency/python-web:3 python --version
 
 deployment:
   master:
