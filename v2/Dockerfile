@@ -1,5 +1,5 @@
 FROM python:2-alpine
-ENV CONSUL_TEMPLATE_VERSION=0.15.0
+ENV CONSUL_TEMPLATE_VERSION=0.16.0
 
 RUN apk --update --no-cache add \
     bash \
@@ -9,13 +9,14 @@ RUN apk --update --no-cache add \
     linux-headers \
     zeromq-dev \
     libevdev \
+    libffi-dev \
     libmemcached-dev \
     postgresql-dev \
     libjpeg-turbo-dev \
     libpng-dev \
     zlib-dev \
     build-base \
-    gettext \
+    git
     libxslt-dev
 
 

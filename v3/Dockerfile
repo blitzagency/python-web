@@ -1,5 +1,5 @@
 FROM python:3-alpine
-ENV CONSUL_TEMPLATE_VERSION=0.14.0
+ENV CONSUL_TEMPLATE_VERSION=0.16.0
 
 RUN apk --update --no-cache add \
     bash \
@@ -9,6 +9,7 @@ RUN apk --update --no-cache add \
     linux-headers \
     zeromq-dev \
     libevdev \
+    libffi-dev \
     libmemcached-dev \
     postgresql-dev \
     libjpeg-turbo-dev \
@@ -17,6 +18,8 @@ RUN apk --update --no-cache add \
     build-base \
     gettext-dev \
     libxslt-dev
+    git && \
+    pip install mypy-lang
 
 RUN cd /tmp && \
         wget https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
