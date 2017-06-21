@@ -15,7 +15,8 @@ RUN apk --update --no-cache add \
     libpng-dev \
     zlib-dev \
     build-base \
-    gettext
+    gettext \
+    libxslt-dev
 
 
 RUN cd /tmp && \

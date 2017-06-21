@@ -16,7 +16,7 @@ RUN apk --update --no-cache add \
     zlib-dev \
     build-base \
     gettext \
-    gettext
+    libxslt-dev
 
 RUN cd /tmp && \
         wget https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
