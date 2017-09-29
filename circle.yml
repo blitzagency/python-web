@@ -22,6 +22,7 @@ dependencies:
     - docker build -f v2/Dockerfile -t blitzagency/python-web:2 v2/
     - docker build -f v2/geo/Dockerfile -t blitzagency/python-web:2-geo v2/geo
     - docker build -f v3/Dockerfile -t blitzagency/python-web:3 v3/
+    - docker build -f v3/jessie/Dockerfile -t blitzagency/python-web:3-jessie v3/jessie
     - docker build -f v3/geo/Dockerfile -t blitzagency/python-web:3-geo v3/geo
 
 test:
@@ -29,6 +30,7 @@ test:
     - docker run blitzagency/python-web:2 python --version
     - docker run blitzagency/python-web:2-geo python --version
     - docker run blitzagency/python-web:3 python --version
+    - docker run blitzagency/python-web:3-jessie python --version
     - docker run blitzagency/python-web:3-geo python --version
 
 deployment:
@@ -38,4 +40,5 @@ deployment:
       - docker push blitzagency/python-web:2
       - docker push blitzagency/python-web:2-geo
       - docker push blitzagency/python-web:3
+      - docker push blitzagency/python-web:3-jessie
       - docker push blitzagency/python-web:3-geo
