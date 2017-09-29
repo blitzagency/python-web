@@ -1,5 +1,7 @@
 FROM python:2-alpine
-ENV CONSUL_TEMPLATE_VERSION=0.16.0
+
+ENV PIPENV_VENV_IN_PROJECT=1
+ENV CONSUL_TEMPLATE_VERSION=0.19.3
 
 RUN apk --update --no-cache add \
     bash \
@@ -16,12 +18,12 @@ RUN apk --update --no-cache add \
     libpng-dev \
     zlib-dev \
     build-base \
-    git
-    libxslt-dev
-
-
-RUN cd /tmp && \
-        wget https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
-        unzip consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
-        mv consul-template /usr/local/bin/consul-template && \
-        rm -f consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
+    gettext-dev \
+    libxslt-dev \
+    git && \
+    pip install -U pip pipenv && \
+    cd /tmp && \
+    wget https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
+    unzip consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
+    mv consul-template /usr/local/bin/consul-template && \
+    rm -f consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
